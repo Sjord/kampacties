@@ -4,17 +4,46 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<?php
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+function print_namen($explos) {
+    $names = array_map(function ($e) { return $e->naam; }, $explos);
+    echo implode(', ', $names);
+}
 
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
+foreach ($kampacties as $kampactie) {
+?>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+    <div class="container">
+            <div class="jumbotron">
+                    <?php echo $kampactie->naam . ' &mdash; ' . $kampactie->datum; ?>
+                    <div class="present">Aanwezig: 
+                        <?php print_namen($kampactie->aanwezig); ?>
+                    </div>
+                    <div class="absent">Afwezig: 
+                        <?php print_namen($kampactie->afwezig); ?>
+                    </div>
+                    <button class="btn btn-primary add-to-action-button">Voeg jezelf toe</button>
+
+                    <form class="add-to-action-form">
+                        <table class="table">
+                            <tr>
+                                <td>Naam:</td>
+                                <td><input type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>Geheime wachtwoord:</td>
+                                <td><input type="password" /></td>
+                            </tr>
+                            <tr>
+                                <td>Ben je er bij?</td>
+                                <td><button class="btn btn-success">Aanwezig</button> <button class="btn btn-danger">Afwezig</button></td>
+                            </tr>
+                        </table>
+                    </form>
+            </div>
+    </div>
+
+<?php
+}
+?>
