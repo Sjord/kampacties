@@ -13,7 +13,7 @@
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="starter-template.css" rel="stylesheet">
+        <link href="css/kampacties.css" rel="stylesheet">
     </head>
 
     <body>
@@ -29,6 +29,7 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/kampacties.js"></script>
     </body>
 </html>
 
