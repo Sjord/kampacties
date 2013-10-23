@@ -25,7 +25,7 @@ foreach ($kampacties as $kampactie) {
                     </div>
                     <button class="btn btn-primary add-to-action-button">Voeg jezelf toe</button>
 
-                    <form class="add-to-action-form" method="POST" action="<?php echo $this->createUrl('kampacties/add',array()) ?>">
+                    <form class="add-to-action-form" method="POST" action="<?php echo $this->createUrl('kampacties/add',array('kampactie_id' => $kampactie->id)) ?>">
                         <table class="table">
                             <tr>
                                 <td>Naam:</td>
