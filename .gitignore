@@ -1,3 +1,5 @@
 www/assets/
 www/protected/runtime/
 www/themes/classic/views/
+*.swp
+www/protected/config/database.php
