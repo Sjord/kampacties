@@ -16,7 +16,8 @@ foreach ($kampacties as $kampactie) {
 
     <div class="container kampactie" data-kampactie-id="<?php echo $kampactie->id; ?>">
             <div class="jumbotron">
-                    <?php echo CHtml::encode($kampactie->naam) . ' &mdash; ' . $kampactie->datumFormatted(); ?>
+                    <h2><?php echo CHtml::encode($kampactie->naam); ?></h2>
+                    <div class="datum"><?php echo $kampactie->datumFormatted(); ?></div>
                     <div class="present">Aanwezig: 
                         <?php print_namen($kampactie->aanwezig); ?>
                     </div>
