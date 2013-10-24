@@ -24,9 +24,15 @@ class Kampactie extends CActiveRecord
 
     public function scopes()
     {
+        $formatter = CLocale::getInstance('nl')->getDateFormatter();
+        $timestamp = strtotime('-1 week');
+        $recent = $formatter->format('yyyy-MM-dd', $timestamp);
+
         return array(
             'aankomende' => array(
-                'order' => 'datum'
+                'order' => 'datum',
+                'condition' => 'datum >= :recent',
+                'params' => array(':recent' => $recent)
             )
         );
     }
@@ -115,8 +121,7 @@ class Kampactie extends CActiveRecord
 
     public function datumFormatted()
     {
-        $locale = CLocale::getInstance('nl');
-        $formatter = $locale->getDateFormatter();
+        $formatter = CLocale::getInstance('nl')->getDateFormatter();
         return $formatter->format('EEEE d MMMM yyyy', $this->datum);
     }
 }
