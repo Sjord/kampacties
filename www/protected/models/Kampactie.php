@@ -22,6 +22,15 @@ class Kampactie extends CActiveRecord
 		return 'kampactie';
 	}
 
+    public function scopes()
+    {
+        return array(
+            'aankomende' => array(
+                'order' => 'datum'
+            )
+        );
+    }
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
