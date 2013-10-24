@@ -103,4 +103,11 @@ class Kampactie extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function datumFormatted()
+    {
+        $locale = CLocale::getInstance('nl');
+        $formatter = $locale->getDateFormatter();
+        return $formatter->format('EEEE d MMMM yyyy', $this->datum);
+    }
 }
