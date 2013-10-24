@@ -23,7 +23,7 @@ foreach ($kampacties as $kampactie) {
                     <div class="absent">Afwezig: 
                         <?php print_namen($kampactie->afwezig); ?>
                     </div>
-                    <button class="btn btn-primary add-to-action-button">Voeg jezelf toe</button>
+                    <button class="btn btn-primary add-to-action-button"><span class="glyphicon glyphicon-plus"></span> Voeg jezelf toe</button>
 
                     <form class="add-to-action-form" method="POST" action="<?php echo $this->createUrl('kampacties/add',array('kampactie_id' => $kampactie->id)) ?>">
                         <table class="table">
@@ -34,8 +34,8 @@ foreach ($kampacties as $kampactie) {
                             <tr>
                                 <td>Ben je er bij?</td>
                                 <td>
-                                    <button class="btn btn-success" name="status" value="aanwezig">Aanwezig</button> 
-                                    <button class="btn btn-danger" name="status" value="afwezig">Afwezig</button>
+                                    <button class="btn btn-success" name="status" value="aanwezig"><span class="glyphicon glyphicon-thumbs-up"></span> Aanwezig</button> 
+                                    <button class="btn btn-danger" name="status" value="afwezig"><span class="glyphicon glyphicon-thumbs-down"></span> Afwezig</button>
                                 </td>
                             </tr>
                         </table>
