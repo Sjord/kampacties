@@ -8,6 +8,7 @@
  * @property string $datum
  * @property string $omschrijving
  * @property integer $id
+ * @property string $geld
  *
  * The followings are the available model relations:
  * @property Explorer[] $explorers
@@ -47,9 +48,10 @@ class Kampactie extends CActiveRecord
 		return array(
 			array('naam, datum, omschrijving', 'required'),
 			array('naam', 'length', 'max'=>255),
+            array('geld', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('naam, datum, omschrijving, id', 'safe', 'on'=>'search'),
+            array('naam, datum, omschrijving, id, geld', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,6 +79,7 @@ class Kampactie extends CActiveRecord
 			'datum' => 'Datum',
 			'omschrijving' => 'Omschrijving',
 			'id' => 'ID',
+            'geld' => 'Geld',
 		);
 	}
 
@@ -102,6 +105,7 @@ class Kampactie extends CActiveRecord
 		$criteria->compare('datum',$this->datum,true);
 		$criteria->compare('omschrijving',$this->omschrijving,true);
 		$criteria->compare('id',$this->id);
+        $criteria->compare('geld',$this->geld,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
