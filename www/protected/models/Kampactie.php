@@ -29,12 +29,25 @@ class Kampactie extends CActiveRecord
         $timestamp = strtotime('-1 week');
         $recent = $formatter->format('yyyy-MM-dd', $timestamp);
 
+        $year = date('Y');
+        do {
+            $this_season = "$year-09-01";
+            $year--;
+        } while (strtotime($this_season) > time());
+
+        $today = $formatter->format('yyyy-MM-dd', time());
+
         return array(
             'aankomende' => array(
                 'order' => 'datum',
                 'condition' => 'datum >= :recent',
                 'params' => array(':recent' => $recent)
-            )
+            ),
+            'afgelopen' => array(
+                'order' => 'datum',
+                'condition' => 'datum >= :this_season AND datum <= :today',
+                'params' => array(':this_season' => $this_season, ':today' => $today)
+            ),
         );
     }
 

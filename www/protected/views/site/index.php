@@ -4,6 +4,46 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 
+
+<div class="container thermometer">
+    <div class="progress">
+        <?php
+            $goal = 6000;
+            $default = 50;
+
+            $total = 0;
+            foreach ($thermometer as $kampactie) {
+                $geld = $kampactie->geld ?: $default;
+                $total += $geld;
+            }
+            $goal = max($total, $goal);
+
+            $classes = array('success', 'warning', 'danger', 'info');
+            $c_index = 0;
+
+            foreach ($thermometer as $kampactie) {
+                $desc  = $kampactie->naam;
+                if ($kampactie->geld) {
+                    $desc .= ' (€ '.$kampactie->geld.')';
+                }
+
+                $geld = $kampactie->geld ?: $default;
+                $perc = 100 * $geld / $goal;
+?>
+                <div 
+                    class="progress-bar progress-bar-<?php echo $classes[$c_index]; ?>" 
+                    aria-valuenow="<?php echo $perc; ?>" 
+                    title="<?php echo $desc; ?>"
+                    style="width: <?php echo $perc; ?>%"
+                    >
+                </div>
+<?php       
+                $c_index = ($c_index + 1) % count($classes);
+            }
+        ?>
+    </div>
+</div>
+
 <?php
 
 function print_namen($explos) {
