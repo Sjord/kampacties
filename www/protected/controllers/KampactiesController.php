@@ -18,6 +18,11 @@ class KampactiesController extends Controller {
         $explo->status = $status;
         $explo->save();
 
+        $cookie = new CHttpCookie('naam', $naam);
+        $cookie->expire = strtotime('+1 year');
+        $cookie->httpOnly = true;
+        Yii::app()->request->cookies['naam'] = $cookie;
+
         $this->redirect($this->createUrl('site/index'));
     }
 }

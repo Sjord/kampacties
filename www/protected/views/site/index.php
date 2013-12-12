@@ -70,7 +70,7 @@ foreach ($kampacties as $kampactie) {
                         <table class="table">
                             <tr>
                                 <td>Naam:</td>
-                                <td><input type="text" name="name" /></td>
+                                <td><input type="text" name="name" value="<?php echo htmlspecialchars($naam); ?>" /></td>
                             </tr>
                             <tr>
                                 <td>Ben je er bij?</td>

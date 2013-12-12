@@ -27,11 +27,13 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
+        $naam = Yii::app()->request->cookies->contains('naam') ? Yii::app()->request->cookies['naam']->value : '';
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		$this->render('index', array(
             'kampacties' => Kampactie::model()->aankomende()->findAll(),
             'thermometer' => Kampactie::model()->afgelopen()->findAll(),
+            'naam' => $naam,
         ));
 	}
 
