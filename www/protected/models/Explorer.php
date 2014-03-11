@@ -8,6 +8,7 @@
  * @property string $naam
  * @property string $status
  * @property integer $kampactie_id
+ * @property string $ip
  *
  * The followings are the available model relations:
  * @property Kampactie $kampactie
@@ -34,6 +35,7 @@ class Explorer extends CActiveRecord
 			array('kampactie_id', 'numerical', 'integerOnly'=>true),
 			array('naam', 'length', 'max'=>50),
 			array('status', 'length', 'max'=>12),
+			array('ip', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, naam, status, kampactie_id', 'safe', 'on'=>'search'),
@@ -62,6 +64,7 @@ class Explorer extends CActiveRecord
 			'naam' => 'Naam',
 			'status' => 'Status',
 			'kampactie_id' => 'Kampactie',
+			'ip' => 'IP adres',
 		);
 	}
 

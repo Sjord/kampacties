@@ -14,6 +14,7 @@ class KampactiesController extends Controller {
             $explo = new Explorer();
             $explo->kampactie_id = $kampactie_id;
             $explo->naam = $naam;
+            $explo->ip = $_SERVER['REMOTE_ADDR'];
         }
         $explo->status = $status;
         $explo->save();
