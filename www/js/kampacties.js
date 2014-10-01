@@ -7,10 +7,10 @@ $('.jumbotron').each(function () {
 });
 
 function valid_name(name) {
-    if (name.length < 3 || name.length > 26) {
+    if (name.length < 3 || name.length > 20) {
         return false;
     }
-    var re = /[fkquyz]/i;
+    var re = /[fyz,()]/i;
     return !re.exec(name);
 }
 
