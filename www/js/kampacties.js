@@ -10,7 +10,7 @@ function valid_name(name) {
     if (name.length < 3 || name.length > 20) {
         return false;
     }
-    var re = /[fyz,()]/i;
+    var re = /[,()"]/i;
     return !re.exec(name);
 }
 
