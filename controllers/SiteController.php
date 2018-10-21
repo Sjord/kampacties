@@ -9,6 +9,8 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Kampactie;
+use app\models\Explorer;
 
 class SiteController extends Controller
 {
@@ -61,7 +63,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $recentDate = Yii::$app->formatter->asDate('-1 week', 'yyyy-MM-dd');
+        $upcoming = Kampactie::find()->where([">=", "datum", $recentDate])->orderBy(["datum" => SORT_ASC])->all();
+
+        return $this->render('index', [
+            "kampacties" => $upcoming,
+            "thermometer" => Kampactie::find()->all(),
+            "naam" => Yii::$app->request->cookies->getValue("naam", ""),
+        ]);
     }
 
     /**
